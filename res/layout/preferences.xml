@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <EditTextPreference
+        android:key="pref_refresh_period"
+        android:title="Refresh period"
+        android:summary="The time interval in minutes between last data refresh" 
+        android:inputType="number"
+        android:defaultValue="5"/>
+
+    <EditTextPreference
+        android:key="pref_server_host"
+        android:title="Server host" 	
+        android:summary="The host of the server where the data is pushed"
+        android:defaultValue="qa-trunk.m2mop.net"/>
+
+</PreferenceScreen>

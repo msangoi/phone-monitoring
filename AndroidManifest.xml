@@ -5,6 +5,9 @@
     android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     
     <uses-sdk
         android:minSdkVersion="8"
@@ -15,8 +18,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <activity
-            android:name="makeit.phonemonitoring.PhoneMonitoring"
+            android:name="makeit.phonemonitoring.MonitoringActivity"
             android:label="Phone Monitoring" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +29,18 @@
             </intent-filter>
         </activity>
         
+         <activity
+            android:name="makeit.phonemonitoring.SettingsActivity"
+            android:label="Settings" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.PREFERENCE" />
+            </intent-filter>
+        </activity>
+        
         <service
-            android:name="makeit.phonemonitoring.PushDataService"
+            android:name="makeit.phonemonitoring.LastDataService"
             android:exported="false"/>
         
     </application>

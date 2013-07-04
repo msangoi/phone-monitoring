@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".PhoneMonitoring" >
+    tools:context=".MonitoringActivity" >
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -19,7 +19,8 @@
             android:id="@+id/uniqueIdLabel"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Identifier" />
+            android:text="Identifier"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/uniqueIdText"
@@ -39,6 +40,7 @@
         android:text="ToggleButton" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/startStopButton"
@@ -47,36 +49,17 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/startedSinceLabel"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Started since" />
-
-            <TextView
-                android:id="@+id/startedSinceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-" />
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayout2"
-            android:layout_marginTop="30dp"
-            android:background="@color/background"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal" >
 
             <TextView
                 android:id="@+id/lastRefreshLabel"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="Last refresh" />
+                android:text="Last refresh"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lastRefreshText"
@@ -88,14 +71,14 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
             android:orientation="horizontal" >
 
             <TextView
                 android:id="@+id/rssiLabel"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="RSSI" />
+                android:text="RSSI"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/rssiText"
@@ -103,6 +86,124 @@
                 android:layout_height="wrap_content"
                 android:text="-" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/batteryLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Battery level"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/batteryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/operatorLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Operator"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/operatorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/networkTypeLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Network type"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/networdTypeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/roamingLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Roaming"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/roamingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/locationLabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/locationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/errorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/linearLayout2"
+        android:visibility="invisible"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/errorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Push data failed"
+            android:textColor="@color/red" />
+        
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </RelativeLayout>
