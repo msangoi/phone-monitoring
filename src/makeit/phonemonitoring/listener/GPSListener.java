@@ -43,4 +43,11 @@ public class GPSListener implements LocationListener {
         return longitude;
     }
 
+    public void await(long timeout) throws InterruptedException {
+        long start = System.currentTimeMillis();
+        while ((System.currentTimeMillis() - start < timeout) && latitude == null && longitude == null) {
+            Thread.sleep(1000);
+        }
+        return;
+    }
 }

@@ -39,14 +39,20 @@ public class LastDataService extends IntentService {
         this.registerReceiver(batteryListener, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, gpsListener);
+        boolean locationRefresh = locManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (locationRefresh) {
+            locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, gpsListener);
         }
 
+        // wait for data refresh
         try {
             Thread.sleep(5000);
+
+            if (locationRefresh) {
+                gpsListener.await(50 * 1000);
+            }
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            //
         }
 
         // the intent to notify the activity screen
@@ -67,7 +73,7 @@ public class LastDataService extends IntentService {
 
         lastDataIntent.setLastData(data);
 
-        // push data to ther server
+        // push data to the server
         String deviceId = intent.getStringExtra(DEVICE_ID_EXTRA);
         String serverHost = intent.getStringExtra(SERVER_HOST_EXTRA);
         try {
